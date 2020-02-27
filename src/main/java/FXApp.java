@@ -22,6 +22,20 @@ public class FXApp extends Application {
         button.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+
+                Runnable runnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        drawLines();
+                    }
+                };
+
+                new Thread(runnable).start();
+
+
+            }
+
+            private void drawLines() {
                 for (int i = 0; i < 10; i++) {
                     polyline.getPoints().addAll(Math.random() * 640, Math.random() * 480);
                     try {
