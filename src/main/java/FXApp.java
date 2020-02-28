@@ -36,13 +36,24 @@ public class FXApp extends Application {
             }
 
             private void drawLines() {
-                for (int i = 0; i < 10; i++) {
-                    polyline.getPoints().addAll(Math.random() * 640, Math.random() * 480);
+                for (int i = 0; i < 1000; i++) {
+                    polyline.getPoints().addAll(i*10.0%400, Math.random() * 480);
+                    if (i >40){
+                        polyline.getPoints().remove(0,2);
+                    }
                     try {
-                        Thread.sleep(1000);
+                        Thread.sleep(200);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
+                }
+                for (int i = 0; i < 10; i++) {
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    polyline.getPoints().remove(0,2);
                 }
             }
         });
